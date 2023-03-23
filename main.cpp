@@ -4,35 +4,43 @@
 #include<cmath> 
   
 using namespace std; 
+
+void nhap(int a[],int n)
+{
+	for(int i = 0; i<n; i++)
+    {
+    	cin>>a[i];
+	}
+}
   
-int giatrimax(int a,int b,int c)
+int giatrimax(int a[], int n)
 { 
-    if(a>b)
-	{ 
-      	if(a>c) return(a); 
-      	else return(c);
-	} 
-	else if(b>c) return(b); 
-    else return(c); 
-      
+	int maxx = a[0];
+    for(int i = 1; i<n; i++)
+    {
+    	if(maxx < a[i]) maxx = a[i];
+	}
+	return maxx;
 } 
-int giatrimin(int a,int b,int c)
+int giatrimin(int a[], int n)
 { 
-    if(a<b)
-	{ 
-    	if(a<c) return(a); 
-      	else return(c);
-	} 
-    else if(b<c) return(b); 
-    else return(c); 
+    int minn = a[0];
+    for(int i = 1; i<n; i++)
+    {
+    	if(minn > a[i]) minn = a[i];
+	}
+	return minn;
       
 } 
 
 int main() 
 { 
-  int a,b,c; 
-  cin>>a>>b>>c; 
-  cout<<giatrimax(a,b,c);cout<<"\n"; 
-  cout<<giatrimin(a,b,c); 
-  return 0; 
+	int n;
+	cin>>n;
+	if(n<= 0) return 0;
+  	int a[n];
+  	nhap(a,n);
+    cout<<giatrimax(a,n);cout<<"\n"; 
+    cout<<giatrimin(a,n); 
+  	return 0; 
 }
